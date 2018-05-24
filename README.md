@@ -14,6 +14,9 @@ a single location.
 ### Helpful Articles
 The following articles helped me develop the project configuration.
 
+(Goodbye Sprockets Welcome Webpacker 3.0)[https://medium.com/@coorasse/goodbye-sprockets-welcome-webpacker-3-0-ff877fb8fa79]
+(Create a Ruby on Rails 5.1 application with Webpack, React 16, and React Router)[https://blog.grillwork.io/create-a-ruby-on-rails-5-1-application-with-webpack-react-16-and-react-router-e2c16d267f73]
+
 ## Dependencies
 The following packages are required before creating the project:
 * rbenv
@@ -103,7 +106,106 @@ message is at the bottom of the page.
 
 ### Migrate JavaScript
 Even though the project was created without sprockets, the asset directory is
-still the same, so we need to migrate everything to webpacker.
+still the same, so we need to migrate everything to webpacker. In our 
+```app/assets/javascrips/application.js``` we have:
+
+```
+//= require rails-ujs
+//= require activestorage
+//= require_tree .
+```
+
+We can get rid of the ```require_tree``` and install all of the other packages 
+via ```yarn```.
+
+#### Remove Old JavaScript Files
+Remove all of the JavaScript files is app/assets/javascripts.
+
+```
+git rm app/assets/javascripts/application.js
+git rm app/assets/javascripts/cable.js
+git rm app/assets/javascripts/pages.js
+```
+
+#### Install jQuery
+Since we are using Bootstrap we still need jquery.
+
+```
+yarn add jquery
+```
+
+Now we have to configure Webpacker to include it in all our environments. To 
+do that we change the ```environment.js``` file.
+
+```
+\# app/config/webpack/environment.js
+const {environment} = require('@rails/webpacker');
+
+const webpack = require('webpack');
+environment.plugins.append('Provide', new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery'
+}));
+
+module.exports = environment;
+```
+
+*NOTE: THIS STILL DOES NOT WORK FOR ME*
+so you can finally use it into your application.js file.
+
+```
+\# app/javascript/packs/application.js
+
+$(function () {
+  console.log('Hello World from Webpacker');
+});
+```
+
+#### Setup rails-ujs and activestorage
+Add the modules
+
+```
+yarn add rails-ujs activestorage
+```
+
+Start them up in ```app/javascripts/packs/application.js```
+
+```
+import Rails          from 'rails-ujs'
+import ActiveStorage  from 'activestorage'
+
+Rails.start()
+ActiveStorage.start()
+```
+
+#### Setup Bootstrap
+The last piece missing is Bootstrap. JQuery is in place so we can simply 
+install the package and require it.
+
+```
+yarn add bootstrap@4.1.1 popper.js
+```
+
+add Popper to the environment configuration:
+
+```
+\# app/config/webpack/environment.js
+...
+environment.plugins.append('Provide', new webpack.ProvidePlugin({
+  $:      'jquery',
+  jQuery: 'jquery',
+**Popper: ['popper.js', 'default']**
+}));
+...
+```
+
+and import the plugins:
+
+```
+\# app/javascript/packs/application.js
+
+import 'bootstrap/dist/js/bootstrap';
+```
 
 ### Migrate CSS
 

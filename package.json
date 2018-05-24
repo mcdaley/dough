@@ -3,8 +3,13 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "activestorage": "^5.2.0",
     "babel-preset-react": "^6.24.1",
+    "bootstrap": "4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
     "prop-types": "^15.6.1",
+    "rails-ujs": "^5.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   },
