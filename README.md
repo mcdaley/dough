@@ -202,12 +202,83 @@ environment.plugins.append('Provide', new webpack.ProvidePlugin({
 and import the plugins:
 
 ```
-\# app/javascript/packs/application.js
+\## app/javascript/packs/application.js
 
 import 'bootstrap/dist/js/bootstrap';
 ```
 
 ### Migrate CSS
+
+#### Rename the app/javascripts directory
+Since we are using webpacker to manage the css it sounds weird to store css
+files in a directory named ```app/javascripts```, so change the name:
+
+```
+mv app/javascripts app/webpacker
+```
+
+Then we need to change the ```config/webpacker.yml``` to point to the renamed
+directory:
+
+```
+\## config/webpacker.yml
+default: &default
+  source_path:        **app/webpacker**
+  source_entry_path:  packs
+  public_output_path: packs
+  cache_path:         tmp/cache/webpacker
+  ...
+```
+
+#### Setup Bootstrap Globals and Overrides
+Setup the files for overriding default Bootstrap behavior and setting
+Sass global variables. All of the stylesheets will be added to the 
+```app/webpacker/src/stylesheets``` directory
+
+```
+mkdir app/webpacker/src/stylesheets
+touch app/webpacker/src/stylesheets/globals.scss
+touch app/webpacker/src/stylesheets/bootstrap_and_overrides.scss
+```
+
+**TO DO: Add the contents of the files later**
+
+#### Migrate CSS to app/webpacker
+Create a ```app/webpacker/packs/application.scss``` file and import the
+sass files we added in the previous step and import bootstrap. 
+
+```
+// app/webpacker/packs/application.scss
+@import   '../src/stylesheets/globals';
+@import   '../src/stylesheets/bootstrap_and_overrides';
+
+// Custom bootstrap variables must be set or imported *before* bootstrap
+@import   '~bootstrap/scss/bootstrap';
+```
+
+When we add need **SCSS** files then we will put them in the 
+```app/webpacker/src/stylesheets``` directory and import them in the 
+```app/webpacker/packs/application.scss``` file.
+
+#### Update Layout to Include application.scss
+In the ```app/views/layouts/application.html.erb``` change the link to the
+stylesheets from ```stylesheet_include_tag``` to the following:
+
+```
+<%= stylesheet_pack_tag     'application', media: 'all' %>
+```
+
+#### Verify Bootstrap is Setup
+Reload ```http://localhost:5000/pages/home``` and verify we get the default
+Bootstrap font.
+
+**05/24/2018  TODO:**
+- Add a boostrap layout and components to verify.
+
+### Setup Fontawesome
+### Migrate Images
+#### Setup Favicon
+### Cleanup Legacy app/assets Directories
 
 ## Software Dependencies
 ruby      2.4.3
