@@ -26,6 +26,7 @@ gem 'jbuilder',   '~> 2.5'      # Read more: https://github.com/rails/jbuilder
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap',         '>= 1.1.0', require: false
 
+gem 'haml',             '~> 5.0'
 gem 'awesome_print'
 
 group :development, :test do

@@ -1,0 +1,20 @@
+-# ----------------------------------------------------------------------------
+-# app/views/kayouts/application.html.haml
+-# ----------------------------------------------------------------------------
+!!!
+%html
+  %head
+    %title Dough
+    %meta{ charset: 'utf-8' }
+    %meta{ name:    'viewport',
+           content: 'width=device-width, initial-scale-1, shrink-to-fit=no' }
+    
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = javascript_pack_tag     'application'
+    = javascript_pack_tag     'hello_react'
+    = stylesheet_pack_tag     'application', media: 'all'
+
+  %body#root.container-fluid
+    = yield
