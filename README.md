@@ -84,6 +84,16 @@ create the *Procfile*
 server: bin/rails server
 assets: bin/webpack-dev-server
 ```
+
+### Add Gems
+Add the standard set of gems that I want to work with in the application. 
+Eventually the gems will be part of the project creation script
+#### Add Utility Gems
+**pry**
+#### Setup Haml
+I personally prefer Haml templates versus ERB, so we'll use HAML as our default
+template layout.
+
 ### Verify Reactjs is Setup
 Create a controller and view and verify that reactjs is setup. First,
 create the controller:
