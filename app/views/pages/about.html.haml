@@ -1,0 +1,14 @@
+-# ----------------------------------------------------------------------------
+-# app/views/pages/about.html.haml
+-#
+-# TODO: 05/25/2018
+-# - NEED TO ADD THE '.svg' EXTENSION TO LOAD THE IMAGE
+-# ----------------------------------------------------------------------------
+%div.col-12
+  %h2 Example of a background image
+  %div.robot-icon
+    %h3 Hello Mr. Roboto
+  %h2 Example using image_tag helper
+  %p  NOTE: Need to use the asset_pack_path helper to set path to image
+  %br
+  = image_tag( asset_pack_path('images/icon_robots_16.svg'), class: 'img img-responsive', size: "128x128" )

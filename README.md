@@ -287,8 +287,35 @@ Bootstrap font.
 
 ### Setup Fontawesome
 ### Migrate Images
+Migrate the images to be managed by webpacker and we'll verify it works
+by creating a temporary page that loads an image using webpacker. We'll
+load an example robot image in the _About_ page to show it is working as
+expected.
+
+#### Move Images to app/webpacker/images
+Create the directory ```app/webpacker/images``` and place all the images
+that you want to add to the site in that directoty. For our example, we'll
+add the file ```icon_robots_16.svg```
+
+Create an ```index.js``` file in the ```app/webpacker/images``` directory
+and reference all of the image files that we moved to that directory.
+
+```
+\## app/webpacker/images/index.js
+@import './icon_robots_16.svg'
+```
+
+Create a file ```app/webpack/packs/images.js``` and import the content of that
+folder:
+
+```
+\## app/webpack/packs/images.js
+import '../images'
+```
+
 #### Setup Favicon
 ### Cleanup Legacy app/assets Directories
+## Create Reactjs App
 
 ## Software Dependencies
 ruby      2.4.3
