@@ -2,6 +2,9 @@
   "name": "dough",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "^0.0.20",
     "@rails/webpacker": "3.5",
     "activestorage": "^5.2.0",
     "babel-preset-react": "^6.24.1",

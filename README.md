@@ -285,7 +285,28 @@ Bootstrap font.
 **05/24/2018  TODO:**
 - Add a boostrap layout and components to verify.
 
-### Setup Fontawesome
+### Setup Font Awesome
+**NOTE: IF I'M USING THE REACTJS PACKAGE THEN THIS SECTION SHOULD BE IN THE
+CONFIGURING REACTJS PART OF THE README**
+
+There are multiple ways to use Fontawesome, we'll be installing the icons
+via the npm package and trying to use them via HTML and via React components.
+In the longterm it probably makes sense to use the Fontawesome CDN
+
+We'll be using the free icons for now and run the following commands to install
+all of the JavaScript packages that we'll need:
+
+```
+mac:> yarn add @fortawesome/fontawesome
+mac:> yarn add @fortawesome/react-fontawesome
+mac:> yarn add @fortawesome/fontawesome-free-solid
+mac:> overmind restart          # restart the servers
+```
+
+#### Basic HTML / Rails Usage
+
+#### Reactjs Usage
+
 ### Migrate Images
 Migrate the images to be managed by webpacker and we'll verify it works
 by creating a temporary page that loads an image using webpacker. We'll
@@ -314,6 +335,11 @@ import '../images'
 ```
 
 #### Setup Favicon
+Copied the '*png' files to the public directory and added links in the
+```app/views/layouts/application.html``` layout. There are multiple
+sites for generating favicons from images.
+
+(Top Favicon Generators)[https://websitesetup.org/favicon-generator/]
 ### Cleanup Legacy app/assets Directories
 ## Create Reactjs App
 
