@@ -346,6 +346,18 @@ sites for generating favicons from images.
 
 ## Create Reactjs App
 
+## Github
+#### Tags
+To add a tag the code and to push the tag up to github then do the following:
+
+```
+$ git tag -a v0.1 -m "my version 0.1"
+$ git push --tags
+```
+
+You should then be able to see the v0.1 tag in github under the branch
+dropdown.
+
 ## Software Dependencies
 ruby      2.4.3
 rails     5.2.0
