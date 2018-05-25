@@ -340,7 +340,10 @@ Copied the '*png' files to the public directory and added links in the
 sites for generating favicons from images.
 
 (Top Favicon Generators)[https://websitesetup.org/favicon-generator/]
+
 ### Cleanup Legacy app/assets Directories
+
+
 ## Create Reactjs App
 
 ## Software Dependencies
