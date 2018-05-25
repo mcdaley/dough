@@ -7,7 +7,7 @@
     %title Dough
     %meta{ charset: 'utf-8' }
     %meta{ name:    'viewport',
-           content: 'width=device-width, initial-scale-1, shrink-to-fit=no' }
+           content: 'width=device-width, initial-scale=1, shrink-to-fit=no' }
            
     %link{ rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' }
     %link{ rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }
@@ -17,6 +17,7 @@
     = csp_meta_tag
 
     = javascript_pack_tag     'application'
+    = javascript_pack_tag     'dough/index'
     = stylesheet_pack_tag     'application', media: 'all'
 
   %body#root.container-fluid
