@@ -342,6 +342,7 @@ sites for generating favicons from images.
 (Top Favicon Generators)[https://websitesetup.org/favicon-generator/]
 
 ### Cleanup Legacy app/assets Directories
+Removed the ```app/assets``` directory from the project.
 
 
 ## Create Reactjs App
