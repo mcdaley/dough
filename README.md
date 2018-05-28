@@ -4,6 +4,21 @@ the banking and credit card accounts in a single location. Users will be able
 to create accounts and then track all of their transactions and balances in
 a single location.
 
+## To Do
+- [] Tag reactjs release as v0.2
+- [] Add a test model
+- [] Setup testing, rspec, shoulda matchers
+- [] Run simple tests for model, shoulda matchers
+- [] Setup factorybot, database_cleaner
+- [] Migrate model tests to factorybot
+- [] Setup vcr
+- [] Setup capybara, launchy, selenium-webdriver
+- [] Tag rails testing release as v0.3? Should I add a test here?
+- [] Add devise and devise\_token\_auth gems
+- [] Add controller tests for User signup and signin
+- [] Tag reactjs release as v0.4 and use as starting point for devise projects
+- [] Ready to start building out the dough app
+
 ## Project Objectives
 * It is an example application to demonstrate how to create a modern webstack with Ruby on Rails and Reactjs. 
 
@@ -14,8 +29,8 @@ a single location.
 ### Helpful Articles
 The following articles helped me develop the project configuration.
 
-(Goodbye Sprockets Welcome Webpacker 3.0)[https://medium.com/@coorasse/goodbye-sprockets-welcome-webpacker-3-0-ff877fb8fa79]
-(Create a Ruby on Rails 5.1 application with Webpack, React 16, and React Router)[https://blog.grillwork.io/create-a-ruby-on-rails-5-1-application-with-webpack-react-16-and-react-router-e2c16d267f73]
+[Goodbye Sprockets Welcome Webpacker 3.0](https://medium.com/@coorasse/goodbye-sprockets-welcome-webpacker-3-0-ff877fb8fa79)
+[Create a Ruby on Rails 5.1 application with Webpack, React 16, and React Router](https://blog.grillwork.io/create-a-ruby-on-rails-5-1-application-with-webpack-react-16-and-react-router-e2c16d267f73)
 
 ## Dependencies
 The following packages are required before creating the project:
@@ -67,12 +82,12 @@ as the DB and we will add tests later.
 Run the following command to create the project:
 
 ```
-rails new dough --webpack=react --database=postgresql --skip-coffee --skip-turbolinks --skip-sprockets -T
+$rails new dough --webpack=react --database=postgresql --skip-coffee --skip-turbolinks --skip-sprockets -T
 ```
 
 After initializing the app then create the empty databases,
 ```
-bin/rake db:create    # Creates development and test DBs
+$ bin/rake db:create    # Creates development and test DBs
 ```
 
 #### Set up Overmind
@@ -99,7 +114,7 @@ Create a controller and view and verify that reactjs is setup. First,
 create the controller:
 
 ```
-rails g controller pages home
+$ rails g controller pages home
 ```
 
 In the ```app/views/alyouts/application.html.erb``` template change the 
@@ -132,16 +147,16 @@ via ```yarn```.
 Remove all of the JavaScript files is app/assets/javascripts.
 
 ```
-git rm app/assets/javascripts/application.js
-git rm app/assets/javascripts/cable.js
-git rm app/assets/javascripts/pages.js
+$ git rm app/assets/javascripts/application.js
+$ git rm app/assets/javascripts/cable.js
+$ git rm app/assets/javascripts/pages.js
 ```
 
 #### Install jQuery
 Since we are using Bootstrap we still need jquery.
 
 ```
-yarn add jquery
+$ yarn add jquery
 ```
 
 Now we have to configure Webpacker to include it in all our environments. To 
