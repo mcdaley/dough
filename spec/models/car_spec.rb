@@ -1,11 +1,10 @@
 #------------------------------------------------------------------------------
 # spec/models/car_spec.rb
 #------------------------------------------------------------------------------
-
 require 'rails_helper'
 
 RSpec.describe Car, :type => :model do
-  let(:car) { Car.new(make: 'Subaru', model: 'Forrester', miles_per_gallon: 25)}
+  let(:car) { FactoryBot.build(:car) }
   
   describe 'field validations' do
     # Shoulda matcher tests
@@ -14,8 +13,12 @@ RSpec.describe Car, :type => :model do
     
     # RSpec tests
     it 'requires a make' do
-      expect( Car.new(model: 'Forrester', miles_per_gallon: 25) ).to be_invalid
+      expect( FactoryBot.build(:car, make: "")).to be_invalid
       expect( car ).to be_valid
+    end
+    
+    it 'rejects a make that is too long' do
+      expect( FactoryBot.build(:car, make: "x" * 65) ).to be_invalid
     end
   end
   
