@@ -7,17 +7,18 @@ a single location.
 ## To Do
 - [x] Tag reactjs release as v0.2
 - [x] Add a test model
-- [] Setup testing, rspec, shoulda matchers
-- [] Run simple tests for model, shoulda matchers
-- [] Setup factorybot, database_cleaner
-- [] Migrate model tests to factorybot
-- [] Setup vcr
-- [] Setup capybara, launchy, selenium-webdriver
+- [x] Setup testing, rspec, shoulda matchers
+- [x] Run simple tests for model, shoulda matchers
+- [X] Setup factorybot
+- [X] Migrate model tests to factorybot
 - [] Tag rails testing release as v0.3? Should I add a test here?
 - [] Add devise and devise\_token\_auth gems
 - [] Add controller tests for User signup and signin
 - [] Tag reactjs release as v0.4 and use as starting point for devise projects
 - [] Ready to start building out the dough app
+- [] Setup vcr (optional)
+- [] Setup capybara, database_cleaner, launchy, selenium-webdriver
+- [] Setup reactjs testing (enzyme, jest, and one from article last week)
 
 ## Project Objectives
 * It is an example application to demonstrate how to create a modern webstack with Ruby on Rails and Reactjs. 
