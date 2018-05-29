@@ -12,4 +12,7 @@
 #
 
 class Car < ApplicationRecord
+  validates :make,              length: {2..64},  presence: true
+  validates :model,             length: {2..128}, presence: true
+  validates :miles_per_gallon,  numericality: { only_integer: true }
 end
