@@ -5,8 +5,8 @@ to create accounts and then track all of their transactions and balances in
 a single location.
 
 ## To Do
-- [] Tag reactjs release as v0.2
-- [] Add a test model
+- [x] Tag reactjs release as v0.2
+- [x] Add a test model
 - [] Setup testing, rspec, shoulda matchers
 - [] Run simple tests for model, shoulda matchers
 - [] Setup factorybot, database_cleaner
@@ -54,7 +54,11 @@ Development Environment
 * gem 'annotate'
 
 Development and Test Environments
+rspec-rails
+* gem 'rspec-rails', '~> 3.7'
+
 Test Environment
+* gem 'shoulda-matchers', '~> 3.1'
 
 ## JavaScript Packages
 * prop-types
@@ -373,6 +377,25 @@ $ git push --tags
 
 You should then be able to see the v0.1 tag in github under the branch
 dropdown.
+
+## Setup Testing
+#### rspec-rails
+Installation follows github guide
+
+#### shoulda-matchers
+Needed to add the following block in the ```spec/rails_helper.rb```:
+
+```
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library        :rails
+  end
+end
+```
+
+**NOTE:** I wonder if I could add in an 'require' statement so that I could
+automatically create it as part of my script?
 
 ## Software Dependencies
 ruby      2.4.3
