@@ -11,13 +11,14 @@ a single location.
 - [x] Run simple tests for model, shoulda matchers
 - [X] Setup factorybot
 - [X] Migrate model tests to factorybot
+- [x] Setup up database cleaner to clear out test DB tables
 - [] Tag rails testing release as v0.3? Should I add a test here?
 - [] Add devise and devise\_token\_auth gems
 - [] Add controller tests for User signup and signin
 - [] Tag reactjs release as v0.4 and use as starting point for devise projects
 - [] Ready to start building out the dough app
 - [] Setup vcr (optional)
-- [] Setup capybara, database_cleaner, launchy, selenium-webdriver
+- [] Setup capybara, launchy, selenium-webdriver
 - [] Setup reactjs testing (enzyme, jest, and one from article last week)
 
 ## Project Objectives
