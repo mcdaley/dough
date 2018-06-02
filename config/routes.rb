@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get '*path',  to: 'pages#home' 
   end
   
-  root to: 'pages#home'
+  devise_for  :users
+  
+  root        to: 'pages#home'
   
 end

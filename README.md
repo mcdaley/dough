@@ -12,7 +12,7 @@ a single location.
 - [X] Setup factorybot
 - [X] Migrate model tests to factorybot
 - [x] Setup up database cleaner to clear out test DB tables
-- [] Tag rails testing release as v0.3? Should I add a test here?
+- [x] Tag rails testing release as v0.3? Should I add a test here?
 - [] Add devise and devise\_token\_auth gems
 - [] Add controller tests for User signup and signin
 - [] Tag reactjs release as v0.4 and use as starting point for devise projects
@@ -106,6 +106,8 @@ server: bin/rails server
 assets: bin/webpack-dev-server
 ```
 
+Overmind has a dependency on **tmux**, which I've installed but I do not 
+really know what it does.
 ### Add Gems
 Add the standard set of gems that I want to work with in the application. 
 Eventually the gems will be part of the project creation script
@@ -385,9 +387,16 @@ dropdown.
 Installation follows github guide
 
 #### shoulda-matchers
-Needed to add the following block in the ```spec/rails_helper.rb```:
+Created the ```spec/support/shoulda_matchers.com``` and require it in the
+```spec/rails_helper.rb```:
 
 ```
+\# spec/rails_helper.rb
+require 'support/shoulda_matchers'
+```
+
+```
+\# spec/support/shoulda_matchers.rb
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
@@ -395,9 +404,34 @@ Shoulda::Matchers.configure do |config|
   end
 end
 ```
+#### database_cleaner
+Same as above
 
-**NOTE:** I wonder if I could add in an 'require' statement so that I could
-automatically create it as part of my script?
+#### FactoryBot
+Similar to the previous 2 steps:
+* mkdir spec/fractories
+* require 'support/factory_bot.rb
+* Start using factories
+
+## Devise and devise\_token\_auth
+We will be using device and devise_token_auth gems to handle authentication at
+the app and the api layers.
+
+Add the following to your Gemfile
+
+```
+gem 'devise', '~> 4.3'
+```
+
+Then run the ```bundle install```
+
+Next, you need to run the generator
+
+```
+$ rails generate devise:install
+```
+
+**NOTE:** I AM SKIPPING THE CONFIRMABLE OPTION 
 
 ## Software Dependencies
 ruby      2.4.3
