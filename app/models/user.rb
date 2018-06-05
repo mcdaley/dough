@@ -43,6 +43,8 @@ class User < ApplicationRecord
           :validatable,
           :confirmable
           
+  has_many  :cars
+  
   validates :first_name,  length:     { maximum:  64 }
   validates :last_name,   length:     { maximum:  64 }
 

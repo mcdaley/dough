@@ -57,12 +57,46 @@ RSpec.describe User, type: :model do
     it { should have_db_column( :updated_at             ).of_type( :datetime  ) }
   end # end of describe 'db columns'
   
+  describe 'relational schema' do
+    it { should have_many( :cars ) }
+  end # end of describe 'relations'
+  
   describe 'indexes' do
     it { should have_db_index( :confirmation_token    ).unique( true ) }
     it { should have_db_index( :email                 ).unique( true ) }
     it { should have_db_index( :reset_password_token  ).unique( true ) }
     
   end # end of describe 'indexes'
+  
+  #
+  # Verify the "user" factory creates a confirmed user, so we know the
+  # user factories are working as expected
+  #
+  describe 'Verify user factory' do
+    context 'When unconfirmed' do
+      let(:unconfirmed_user) { FactoryBot.create(:unconfirmed_user) }
+
+      it 'should be unconfirmed' do
+        expect(unconfirmed_user.confirmed_at).to be_nil
+      end
+
+      it 'should be valid' do
+        expect(unconfirmed_user).to be_valid
+      end
+    end
+    
+    context 'When confirmed' do
+      let(:user) { FactoryBot.create(:user) }
+
+      it 'should be confirmed' do
+        expect(user.confirmed_at).not_to be_nil
+      end
+
+      it 'should be valid' do
+        expect(user).to be_valid
+      end
+    end
+  end # end of describe 'Verify user factory'
   
   #
   # Verify model validations
@@ -81,32 +115,20 @@ RSpec.describe User, type: :model do
           expect( FactoryBot.build(:user, { email: email }) ).to be_invalid
         end
       end
-    end
-  end
-  
-  describe 'first name' do
-    it 'rejects first name that is too long' do
-      expect( FactoryBot.build(:user, { first_name: "K" * 65 }) ).to_not be_valid 
-    end
-  end
-  
-  describe 'last name' do
-    it 'rejects last name that is too long' do
-      expect( FactoryBot.build(:user, { last_name: "K" * 65 }) ).to_not be_valid 
-    end
-  end
-  
-  #
-  # Verify the "user" factory creates a confirmed user, so we know the
-  # user factories are working as expected
-  #
-  describe 'Confirmed User' do
-    let(:user) { FactoryBot.create(:user) }
+    end # end of describe 'email'
     
-    it 'should be confirmed' do
-      expect(user.confirmed_at).not_to be_nil
-    end
-  end
+    describe 'first name' do
+      it 'rejects first name that is too long' do
+        expect( FactoryBot.build(:user, { first_name: "K" * 65 }) ).to_not be_valid 
+      end
+    end # end of describe 'first name'
   
+    describe 'last name' do
+      it 'rejects last name that is too long' do
+        expect( FactoryBot.build(:user, { last_name: "K" * 65 }) ).to_not be_valid 
+      end
+    end # end of describe 'last name'
+    
+  end # end of describe 'validations
   
 end # end of RSpec.describe User

@@ -37,6 +37,16 @@ FactoryBot.define do
       end
     end # end of factory :user
 
+    factory :user_with_cars, :parent => :user do
+      first_name              "Alex"
+      last_name               "Van Pelt"
+      email                   "avp@bills.com"
+      
+      after(:create) do |user|
+        FactoryBot.create(:car, user: user)
+      end
+    end # end of factory :user_with_cars
+
   end # end of factory :unconfirmed_user
   
   #----------------------------------------------------------------------------
@@ -46,6 +56,7 @@ FactoryBot.define do
     f.make                "Subaru"
     f.model               "Forrester"
     f.miles_per_gallon    25
+    user
   end # end of factory :car, class Car
   
 end # end of FactoryBot.define
