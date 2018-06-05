@@ -13,7 +13,10 @@ a single location.
 - [X] Migrate model tests to factorybot
 - [x] Setup up database cleaner to clear out test DB tables
 - [x] Tag rails testing release as v0.3? Should I add a test here?
-- [] Add devise and devise\_token\_auth gems
+- [x] Add devise gem
+- [] Add devise\_token\_auth gem
+- [] Add example Car and CarsApiController that show how to setup APIs
+- [] Add CarsApiController tests that fake user signing up
 - [] Add controller tests for User signup and signin
 - [] Tag reactjs release as v0.4 and use as starting point for devise projects
 - [] Ready to start building out the dough app

@@ -28,7 +28,7 @@ class Api::V1::CarsController < ApiController
       render    'error'
       return
     rescue Exception => error  
-      logger.error("ERROR: #{e.message}")   
+      logger.error("ERROR: #{error.message}")   
       ##puts e.backtrace.inspect
     end
   end
