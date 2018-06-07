@@ -2,6 +2,7 @@
 # app/controllers/application_controller.rb
 #------------------------------------------------------------------------------
 class ApplicationController < ActionController::Base
+  include DeviseTokenAuth::Concerns::SetUserByToken
   
   ##
   # For API requests we do not need to worry about rails generating CSRF key

@@ -4,6 +4,24 @@ the banking and credit card accounts in a single location. Users will be able
 to create accounts and then track all of their transactions and balances in
 a single location.
 
+## Controller RSpec Notes
+I can generate a token for a user model using the following commands and this
+saves it in the ```tokens``` column of the ```users``` table
+
+```
+marv  = User.first
+token = marv.create_new_auth_token
+```
+
+The controller and request specs provide access to the follow HTTP methods:
+
+* get
+* post
+* put
+* patch
+* head
+* delete
+
 ## To Do
 - [x] Tag reactjs release as v0.2
 - [x] Add a test model
@@ -15,9 +33,15 @@ a single location.
 - [x] Tag rails testing release as v0.3? Should I add a test here?
 - [x] Add devise gem
 - [] Add devise\_token\_auth gem
+      [] Test adding a user with curl
+      [] Test logging in as a user with curl
+      [] Write test to verify I can log into app w/ API
 - [] Add example Car and CarsApiController that show how to setup APIs
-- [] Add CarsApiController tests that fake user signing up
-- [] Add controller tests for User signup and signin
+- [] Add CarsApiController request tests that fake user signing up.
+      [] Rm hard-coded user in controller and add current\_user
+      [] Write test that logs into API and returns all of a user's cars
+      [] Write test that verifies non-signed-in user can access their cars#index
+- [] Add request tests for User signup and signin
 - [] Tag reactjs release as v0.4 and use as starting point for devise projects
 - [] Ready to start building out the dough app
 - [] Setup vcr (optional)

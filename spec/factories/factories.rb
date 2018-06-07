@@ -17,6 +17,7 @@ FactoryBot.define do
     f.first_name              "Thurmon"
     f.last_name               "Thomas"
     f.email                   "thurmon@bills.com"
+    f.uid                     "thurmon@bills.com"
     f.password                "foobar123"
     f.password_confirmation   "foobar123"
     
@@ -41,6 +42,7 @@ FactoryBot.define do
       first_name              "Alex"
       last_name               "Van Pelt"
       email                   "avp@bills.com"
+      uid                     "avp@bills.com"
       
       after(:create) do |user|
         FactoryBot.create(:car, user: user)

@@ -2,25 +2,16 @@
 # app/controllers//api/v1/cars_controller.rb
 #------------------------------------------------------------------------------
 class Api::V1::CarsController < ApiController
+  before_action   :authenticate_user!
 
   def index
-    #########################################################################
-    # TODO: 06/04/2018
-    # - HARDCODED USER UNTIL I GET THE DEVISE TOKEN AUTH WORKING
-    #########################################################################
-    ## @user = current_user
-    @user = User.first
+    @user = current_user
     @cars = @user.cars
   end
 
   def show
     begin
-      #########################################################################
-      # TODO: 06/04/2018
-      # - HARDCODED USER UNTIL I GET THE DEVISE TOKEN AUTH WORKING
-      #########################################################################
-      ## @user = current_user
-      @user = User.first
+      @user = current_user
       @car  = @user.cars.find(params[:id])
     rescue ActiveRecord::RecordNotFound => error
       @error    = {name: error.class, code: 404, status: 'Not Found', message: error.message}

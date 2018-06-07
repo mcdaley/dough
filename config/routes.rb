@@ -2,8 +2,12 @@
 # config/routes.rb
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
+
+  # Define API routes
   namespace :api do
     namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
+
       resources :cars
     end
   end

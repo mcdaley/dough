@@ -30,6 +30,8 @@ gem 'haml',                     '~> 5.0'
 gem 'awesome_print'
 
 gem 'devise',                   '~> 4.4'
+gem 'devise_token_auth',        '~> 0.1'
+gem 'omniauth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
